@@ -35,60 +35,28 @@ how to do that ?
 what was the prototype lesson all about ? 
 why do we even require prototype ? 
 can we do without it ? how will you do it.
+
+I already have those functions, how to use them
+But if I am pushing the new book object into array then how will I display them ? 
+do I have to iterate through the array ? 
+or just access the last element in the array ? 
 */
 
 const myLibrary = [];
 
-function Book(title, numberOfPages, read) {
+function Book(title, author, numberOfPages, read) {
     this.title = title;
+    this.author = author;
     this.numberOfPages = numberOfPages;
     this.read = read;
 }
 
-function addBookToLibrary(title, numberOfPages, read) {
-    const newBook = new Book(title, numberOfPages, read);
+function addBookToLibrary(title, author, numberOfPages, read) {
+    const newBook = new Book(title, author, numberOfPages, read);
     myLibrary.push(newBook);
 }
 
-addBookToLibrary("Alchemist", 134, true);
-addBookToLibrary("Thus Spoke Zarathustra", 523, false);
-addBookToLibrary("Thus Spoke Zarathustra", 523, false);
-addBookToLibrary("Thus Spoke Zarathustra", 523, false);
-addBookToLibrary("Thus Spoke Zarathustra", 523, false);
-addBookToLibrary("Thus Spoke Zarathustra", 523, false);
-addBookToLibrary("Thus Spoke Zarathustra", 523, false);
-
-console.log(myLibrary);
-
-console.log(myLibrary[0]);
-console.log(myLibrary[1]);
-
 const container = document.querySelector(".container");
-
-console.log(myLibrary.length);
-
-/*
-for (let i = 0; i < myLibrary.length; ++i) {
-
-    console.log(i, myLibrary[i]);
-    const bookDiv = document.createElement("div");
-    bookDiv.classList.add("book");
-    container.appendChild(bookDiv);
-
-    const name = document.createElement("p");
-    name.textContent = `${myLibrary[i].title}`;
-    name.style.cssText = "font-weight: bold; font-size: 20";
-    bookDiv.appendChild(name);
-
-    const pages = document.createElement("p");
-    pages.textContent = `${myLibrary[i].numberOfPages}`;
-    bookDiv.appendChild(pages);
-
-    const read = document.createElement("p");
-    read.textContent = `${myLibrary[i].read}`;
-    bookDiv.appendChild(read);
-}
-*/
 
 const button = document.querySelector("#btn");
 
@@ -181,6 +149,18 @@ button.addEventListener('click', () => {
     dialog.appendChild(addButton);
     dialog.appendChild(closeButton);
 
+    /* 
+    here, what should I do ? 
+    should I create a new book through the function ? and add it to the array ? 
+    in this function we just have to show the book details in the div that we have inserted 
+    so push the book object into array
+    and access the last element in array 
+    Don't I have to add <p> blocks in the bookDiv then ? 
+    how will you show book details ?      
+
+    is there a way by which I could display all the book details by inserting it once ? 
+    like I create a <p> and insert entire book object in it ? then what will happen ? 
+    */
     addButton.addEventListener('click', () => {
         const bookDiv = document.createElement("div");
         bookDiv.classList.add("book");
@@ -264,4 +244,7 @@ then would we select the toggleRead function ?
 what's the prototype of toggleRead ? 
 we can also change the prototype of an object and set it something.
 how to create Book prototype function ? 
+
+we were required to use function Book to create new book objects whenever new book button is clicked. 
+
 */

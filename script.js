@@ -20,13 +20,21 @@ will be our form, right. and then what ?
 use dialog , do I insert it through dom ? 
 inside this dialog resides our form 
 
-where's the dialog, bro  ? it's not even showing up
+where's the dialog  ? it's not even showing up
 for `read`, I want a radio button 
 
 Now, I have to define onclick function for add and close in dialog box ? 
 how to do that ? 
 How do I access the information that is input into the dialog form ? 
+How do I add remove button to a bookDiv ? 
+and an event of when it's clicked, this div will get deleted.
 
+ToggleRead is like a child of bookDiv,
+when ToggleRead is clicked Read status of bookDiv changes to it's opposite.
+how to do that ? 
+what was the prototype lesson all about ? 
+why do we even require prototype ? 
+can we do without it ? how will you do it.
 */
 
 const myLibrary = [];
@@ -186,7 +194,7 @@ button.addEventListener('click', () => {
 
         const author = document.createElement("p");
         const authorInput = document.getElementById("Author");
-        author.textContent = authorInput.value; 
+        author.textContent = `By ${authorInput.value}`; 
         bookDiv.appendChild(author);
 
         const pages = document.createElement("p");
@@ -195,6 +203,7 @@ button.addEventListener('click', () => {
         bookDiv.appendChild(pages);
 
         const read = document.createElement("p");
+        // read.add.classList = "readStatus";   
         const readInput = document.getElementById("Read");
         if(readInput.checked) {
             read.textContent = "Read";
@@ -202,9 +211,57 @@ button.addEventListener('click', () => {
             read.textContent = "Not read";
         }
         bookDiv.appendChild(read);
+
+
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        bookDiv.appendChild(removeButton);
+
+        const toggleRead = document.createElement("button");
+        toggleRead.textContent = "Toggle Read";
+        bookDiv.appendChild(toggleRead);
+
+        removeButton.addEventListener('click', ()=> {
+            bookDiv.remove();
+        });
+
+        toggleRead.addEventListener('click', ()=> {
+            console.log("toggle read button clicked");
+
+            console.log(toggleRead.valueOf());
+            console.log(bookDiv.valueOf());
+            console.log(Object.getPrototypeOf(toggleRead));
+
+            // const readElement = document.getElementById("Read");
+            // console.log(readElement.value);
+            // if(readElement.value === "Read"){
+            //     readElement.textContent = "Not Read";
+            // }else{
+            //     readElement.textContent = "Read";
+            // }
+        });
+        dialog.close();
     });
     closeButton.addEventListener('click', () => {
         console.log("close button clicked");
         dialog.close();
     });
 });
+
+/* 
+what's wrong here ? I can't seem to find out 
+in toggleRead button click event , I retrieved the element with id Read
+and checked it's value.
+But apparently, it's not doing anything with it. is it a deadend ? 
+
+how to do through prototype 
+what things can we do through prototype ? 
+how to get the prototype of a function ? 
+
+but isn't this applied to functions ? 
+parent of button is a div 
+then would we select the toggleRead function ? 
+what's the prototype of toggleRead ? 
+we can also change the prototype of an object and set it something.
+how to create Book prototype function ? 
+*/

@@ -25,6 +25,8 @@ for `read`, I want a radio button
 
 Now, I have to define onclick function for add and close in dialog box ? 
 how to do that ? 
+How do I access the information that is input into the dialog form ? 
+
 */
 
 const myLibrary = [];
@@ -57,6 +59,7 @@ const container = document.querySelector(".container");
 
 console.log(myLibrary.length);
 
+/*
 for (let i = 0; i < myLibrary.length; ++i) {
 
     console.log(i, myLibrary[i]);
@@ -77,6 +80,7 @@ for (let i = 0; i < myLibrary.length; ++i) {
     read.textContent = `${myLibrary[i].read}`;
     bookDiv.appendChild(read);
 }
+*/
 
 const button = document.querySelector("#btn");
 
@@ -105,7 +109,7 @@ button.addEventListener('click', () => {
         form.appendChild(input);
 
     }
-    
+
     {
         const form = document.createElement("form");
         form.action = "#";
@@ -153,8 +157,8 @@ button.addEventListener('click', () => {
         label.textContent = "Read";
         const input = document.createElement("input");
         input.type = "checkbox";
-        input.name = "checkbox";
-        input.id = "checkbox";
+        input.name = "Read";
+        input.id = "Read";
 
         form.appendChild(label);
         form.appendChild(input);
@@ -169,10 +173,37 @@ button.addEventListener('click', () => {
     dialog.appendChild(addButton);
     dialog.appendChild(closeButton);
 
-    addButton.addEventListener('click', ()=> {
-        
+    addButton.addEventListener('click', () => {
+        const bookDiv = document.createElement("div");
+        bookDiv.classList.add("book");
+        container.appendChild(bookDiv);
+
+        const title = document.createElement("p");
+        const titleInput = document.getElementById("Title");
+        title.textContent = titleInput.value;
+        title.style.cssText = "font-weight: bold; font-size: 20px" ;
+        bookDiv.appendChild(title);
+
+        const author = document.createElement("p");
+        const authorInput = document.getElementById("Author");
+        author.textContent = authorInput.value; 
+        bookDiv.appendChild(author);
+
+        const pages = document.createElement("p");
+        const pagesInput = document.getElementById("Pages");
+        pages.textContent = `${pagesInput.value} pages`;
+        bookDiv.appendChild(pages);
+
+        const read = document.createElement("p");
+        const readInput = document.getElementById("Read");
+        if(readInput.checked) {
+            read.textContent = "Read";
+        }else{
+            read.textContent = "Not read";
+        }
+        bookDiv.appendChild(read);
     });
-    closeButton.addEventListener('click', ()=> {
+    closeButton.addEventListener('click', () => {
         console.log("close button clicked");
         dialog.close();
     });

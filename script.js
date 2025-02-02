@@ -172,4 +172,8 @@ button.addEventListener('click', () => {
     addButton.addEventListener('click', ()=> {
         
     });
+    closeButton.addEventListener('click', ()=> {
+        console.log("close button clicked");
+        dialog.close();
+    });
 });

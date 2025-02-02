@@ -1,3 +1,17 @@
-div {
-    color: blue;
+/* 
+How to arrange the grid properly ? 
+I want them to be horizontally and then wrap up on next line if there is insufficient space 
+Can I define height and width for the book div ? 
+what would then happen ? 
+should I do grid template ? 
+grid-template-column: 
+what I have to do ?
+*/
+.book {
+    height: 200px;
+    width: 300px;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 0fr));
 }

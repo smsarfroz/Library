@@ -40,6 +40,27 @@ I already have those functions, how to use them
 But if I am pushing the new book object into array then how will I display them ? 
 do I have to iterate through the array ? 
 or just access the last element in the array ? 
+
+we want the toggle read button on bookDiv to work, right ? 
+how will that be possible ? 
+
+
+Book.prototype.toggle_read = function() {
+    if(this.read === "Read") {
+        this.read = "Not Read";
+    }else{
+        this.read = "Read";
+    }
+}
+
+bookObject.toggle_read();
+and then what ? 
+what else do I need here ? 
+How to update the display ? 
+why do we even require prototype here ? remind me again 
+but we haven't even created book object from Book function 
+what am I missing 
+
 */
 
 const myLibrary = [];
@@ -59,6 +80,8 @@ function addBookToLibrary(title, author, numberOfPages, read) {
 const container = document.querySelector(".container");
 
 const button = document.querySelector("#btn");
+
+let index = -1; 
 
 button.addEventListener('click', () => {
     console.log("button clicked!");
@@ -160,8 +183,43 @@ button.addEventListener('click', () => {
 
     is there a way by which I could display all the book details by inserting it once ? 
     like I create a <p> and insert entire book object in it ? then what will happen ? 
+
+    what's wrong with directly changing the value of obj book ? 
+
+    obj.read = "Not Read" -> what's wrong in this ? 
+
+    in each button add an integer. like button{i}
+    when a button_i is clicked we know the index, so we know the book number in the myLibrary array 
+
+    makes changes in that objects and 
+    then update the <p> or anything that contains this text of read status in bookDiv display section.
+    
+    and then what ? 
+
+    also, in the form section we can create new instance of book object i
+    and while trying display details in bookDiv div, we can use this book object i directly instead of calling 
+    query selector again and again for separate details. 
+
+    and then what ? 
+
+    but then if you remove a book div by clicking remove button. mylibrary array is still the same, tho
+    how to care of that ? 
+    indexes will then also get mismatched.
+    no, it will not. because button_i and mylibrary_i will always match even after removing some book div. why ? 
+    i always increases.
+    I don't require index ? 
+    I wanted to store the index with each toggle read button, so that I when the button is clicked 
+    I would loop that object up in the array and if I want to update some property in it then I will do so. 
+    
+    But how do you even get the index out of the variable name of the button ? 
+    like var3 - how will you extract 3 from here ? 
+
+    so, if a button is clicked how do I know which div is it ? is there a different method to do so ? 
+    create a book object here, how ? 
     */
     addButton.addEventListener('click', () => {
+        index++;
+
         const bookDiv = document.createElement("div");
         bookDiv.classList.add("book");
         container.appendChild(bookDiv);
@@ -185,13 +243,25 @@ button.addEventListener('click', () => {
         const read = document.createElement("p");
         // read.add.classList = "readStatus";   
         const readInput = document.getElementById("Read");
+        let readStatus = "Read";
         if(readInput.checked) {
             read.textContent = "Read";
         }else{
             read.textContent = "Not read";
+            readStatus = "Not read";
         }
         bookDiv.appendChild(read);
 
+
+        let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, readStatus);
+        console.log(newBook);
+        Book.prototype.toggle_read = function() {
+            if(this.read === "Read") {
+                this.read = "Not Read";
+            }else{
+                this.read ="Read";
+            }
+        }
 
         const removeButton = document.createElement("button");
         removeButton.textContent = "Remove";
@@ -208,17 +278,8 @@ button.addEventListener('click', () => {
         toggleRead.addEventListener('click', ()=> {
             console.log("toggle read button clicked");
 
-            console.log(toggleRead.valueOf());
-            console.log(bookDiv.valueOf());
-            console.log(Object.getPrototypeOf(toggleRead));
-
-            // const readElement = document.getElementById("Read");
-            // console.log(readElement.value);
-            // if(readElement.value === "Read"){
-            //     readElement.textContent = "Not Read";
-            // }else{
-            //     readElement.textContent = "Read";
-            // }
+            newBook.toggle_read();
+            read.textContent = newBook.read;
         });
         dialog.close();
     });

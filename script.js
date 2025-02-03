@@ -214,6 +214,8 @@ button.addEventListener('click', () => {
 
     so, if a button is clicked how do I know which div is it ? is there a different method to do so ? 
     create a book object here, how ? 
+
+    bug found! 
     */
     addButton.addEventListener('click', () => {
 

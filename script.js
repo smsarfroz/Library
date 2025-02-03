@@ -81,8 +81,6 @@ const container = document.querySelector(".container");
 
 const button = document.querySelector("#btn");
 
-let index = -1; 
-
 button.addEventListener('click', () => {
     console.log("button clicked!");
 
@@ -241,7 +239,6 @@ button.addEventListener('click', () => {
         bookDiv.appendChild(pages);
 
         const read = document.createElement("p");
-        // read.add.classList = "readStatus";   
         const readInput = document.getElementById("Read");
         let readStatus = "Read";
         if(readInput.checked) {

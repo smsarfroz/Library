@@ -216,7 +216,6 @@ button.addEventListener('click', () => {
     create a book object here, how ? 
     */
     addButton.addEventListener('click', () => {
-        index++;
 
         const bookDiv = document.createElement("div");
         bookDiv.classList.add("book");

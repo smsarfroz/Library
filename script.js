@@ -1,3 +1,4 @@
+
 const myLibrary = [];
 
 function Book(title, author, numberOfPages, read) {
@@ -23,6 +24,7 @@ button.addEventListener('click', () => {
     dialog.open = "true";
     container.appendChild(dialog);
 
+    //Title
     {
         const form = document.createElement("form");
         form.action = "#";
@@ -42,6 +44,7 @@ button.addEventListener('click', () => {
 
     }
 
+    //Author
     {
         const form = document.createElement("form");
         form.action = "#";
@@ -60,6 +63,7 @@ button.addEventListener('click', () => {
         form.appendChild(input);
 
     }
+    //Pages
     {
         const form = document.createElement("form");
         form.action = "#";
@@ -78,6 +82,7 @@ button.addEventListener('click', () => {
         form.appendChild(input);
 
     }
+    //Read
     {
         const form = document.createElement("form");
         form.action = "#";
@@ -96,6 +101,7 @@ button.addEventListener('click', () => {
         form.appendChild(input);
 
     }
+    
 
     const addButton = document.createElement("button");
     const closeButton = document.createElement("button");
@@ -105,47 +111,61 @@ button.addEventListener('click', () => {
     dialog.appendChild(addButton);
     dialog.appendChild(closeButton);
 
-    addButton.addEventListener('click', () => {
 
+    addButton.addEventListener('click', (event) => {
+        event.preventDefault(); 
         const bookDiv = document.createElement("div");
         bookDiv.classList.add("book");
         container.appendChild(bookDiv);
 
+        //title
         const title = document.createElement("p");
         const titleInput = document.getElementById("Title");
         title.textContent = titleInput.value;
-        title.style.cssText = "font-weight: bold; font-size: 20px" ;
+        title.style.cssText = "font-weight: bold; font-size: 20px";
         bookDiv.appendChild(title);
 
+        //author
         const author = document.createElement("p");
         const authorInput = document.getElementById("Author");
-        author.textContent = `By ${authorInput.value}`; 
+        author.textContent = `By ${authorInput.value}`;
         bookDiv.appendChild(author);
 
+        //pages
         const pages = document.createElement("p");
         const pagesInput = document.getElementById("Pages");
         pages.textContent = `${pagesInput.value} pages`;
         bookDiv.appendChild(pages);
 
+        //read
         const read = document.createElement("p");
         const readInput = document.getElementById("Read");
         let readStatus = "Read";
-        if(readInput.checked) {
+        if (readInput.checked) {
             read.textContent = "Read";
-        }else{
+        } else {
             read.textContent = "Not read";
             readStatus = "Not read";
         }
         bookDiv.appendChild(read);
 
 
+
         let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, readStatus);
         console.log(newBook);
-        Book.prototype.toggle_read = function() {
-            if(this.read === "Read") {
+
+        // const allformEle = document.querySelectorAll('form');
+        // allformEle.forEach(element => {
+        //     console.log("element :",element);
+        //     console.log(element.value);
+        //     element.reset();
+        //     console.log(element.value);
+        // });
+        Book.prototype.toggle_read = function () {
+            if (this.read === "Read") {
                 this.read = "Not Read";
-            }else{
-                this.read ="Read";
+            } else {
+                this.read = "Read";
             }
         }
 
@@ -157,11 +177,11 @@ button.addEventListener('click', () => {
         toggleRead.textContent = "Toggle Read";
         bookDiv.appendChild(toggleRead);
 
-        removeButton.addEventListener('click', ()=> {
+        removeButton.addEventListener('click', () => {
             bookDiv.remove();
         });
 
-        toggleRead.addEventListener('click', ()=> {
+        toggleRead.addEventListener('click', () => {
             console.log("toggle read button clicked");
 
             newBook.toggle_read();
@@ -173,5 +193,17 @@ button.addEventListener('click', () => {
         console.log("close button clicked");
         dialog.close();
     });
+
+    //reset form values
+    //select all 'form'
+
+    // const allformEle = document.querySelectorAll('form');
+
+    // allformEle.forEach(element => {
+    //     //what do I want to do with the element ? 
+    //     //i want to close it 
+    //     //can i close it directly ? 
+    //     element.reset();
+    // });
 });
 

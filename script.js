@@ -126,6 +126,7 @@ addButton.addEventListener('click', (event) => {
 
     //read
     const read = document.createElement("p");
+    //what is this code for ? 
     let readStatus = "Read";
     if (input4.checked) {
         read.textContent = "Read";
@@ -133,6 +134,7 @@ addButton.addEventListener('click', (event) => {
         read.textContent = "Not read";
         readStatus = "Not read";
     }
+    // read.textContent = input4.value;
     bookDiv.appendChild(read);
 
 

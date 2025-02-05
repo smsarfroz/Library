@@ -137,7 +137,31 @@ addButton.addEventListener('click', (event) => {
     // read.textContent = input4.value;
     bookDiv.appendChild(read);
 
+    let newBook = new Book(input1.value, input2.value, input3.value, readStatus);
+    console.log(newBook);
+    Book.prototype.toggle_read = function () {
+        if (this.read === "Read") {
+            this.read = "Not Read";
+        } else {
+            this.read = "Read";
+        }
+    }
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+    bookDiv.appendChild(removeButton);
+    const toggleRead = document.createElement("button");
+    toggleRead.textContent = "Toggle Read";
+    bookDiv.appendChild(toggleRead);
+    removeButton.addEventListener('click', () => {
+        bookDiv.remove();
+    });
+    toggleRead.addEventListener('click', () => {
+        console.log("toggle read button clicked");
+        newBook.toggle_read();
+        read.textContent = newBook.read;
+    });
 
+    
     dialog.close();
 });
 
@@ -146,4 +170,17 @@ closeButton.addEventListener('click', (event) => {
     console.log("close button clicked");
     dialog.close();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 

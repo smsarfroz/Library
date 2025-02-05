@@ -25,10 +25,10 @@ button.addEventListener('click', () => {
     container.appendChild(dialog);
 
     //Title
-    const form1 = document.createElement("form");
-    form1.action = "#";
-    form1.method = "POST";
-    dialog.appendChild(form1);
+    const form = document.createElement("form");
+    form.action = "#";
+    form.method = "POST";
+    dialog.appendChild(form);
 
     const label1 = document.createElement("label");
     label1.for = "Title";
@@ -38,16 +38,16 @@ button.addEventListener('click', () => {
     input1.name = "Title";
     input1.id = "Title";
 
-    form1.appendChild(label1);
-    form1.appendChild(input1);
+    form.appendChild(label1);
+    form.appendChild(input1);
 
 
 
     //Author
-        const form2 = document.createElement("form");
-        form2.action = "#";
-        form2.method = "POST";
-        dialog.appendChild(form2);
+        // const form2 = document.createElement("form");
+        // form2.action = "#";
+        // form2.method = "POST";
+        // dialog.appendChild(form2);
 
         const label2 = document.createElement("label");
         label2.for = "Author";
@@ -57,14 +57,14 @@ button.addEventListener('click', () => {
         input2.name = "Author";
         input2.id = "Author";
 
-        form2.appendChild(label2);
-        form2.appendChild(input2);
+        form.appendChild(label2);
+        form.appendChild(input2);
 
     //Pages
-        const form3 = document.createElement("form");
-        form3.action = "#";
-        form3.method = "POST";
-        dialog.appendChild(form3);
+        // const form3 = document.createElement("form");
+        // form3.action = "#";
+        // form3.method = "POST";
+        // dialog.appendChild(form3);
 
         const label3 = document.createElement("label");
         label3.for = "Pages";
@@ -74,14 +74,14 @@ button.addEventListener('click', () => {
         input3.name = "Pages";
         input3.id = "Pages";
 
-        form3.appendChild(label3);
-        form3.appendChild(input3);
+        form.appendChild(label3);
+        form.appendChild(input3);
 
     //Read
-        const form4 = document.createElement("form");
-        form4.action = "#";
-        form4.method = "POST";
-        dialog.appendChild(form4);
+        // const form4 = document.createElement("form");
+        // form4.action = "#";
+        // form4.method = "POST";
+        // dialog.appendChild(form4);
 
         const label4 = document.createElement("label");
         label4.for = "Read";
@@ -91,8 +91,8 @@ button.addEventListener('click', () => {
         input4.name = "Read";
         input4.id = "Read";
 
-        form4.appendChild(label4);
-        form4.appendChild(input4);
+        form.appendChild(label4);
+        form.appendChild(input4);
 
     
 

@@ -8,6 +8,7 @@ function Book(title, author, numberOfPages, read) {
     this.read = read;
 }
 
+class
 function addBookToLibrary(title, author, numberOfPages, read) {
     const newBook = new Book(title, author, numberOfPages, read);
     myLibrary.push(newBook);
